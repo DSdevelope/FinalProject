@@ -1,4 +1,5 @@
 import 'package:finalproject/utils/strings.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class AuthScreen extends StatefulWidget {
@@ -9,6 +10,8 @@ class AuthScreen extends StatefulWidget {
 }
 
 class _AuthScreenState extends State<AuthScreen> {
+  late TextEditingController _phoneController;
+  late TextEditingController _passwordController;
 
   static const borderStyle = OutlineInputBorder(
       borderRadius: BorderRadius.all(Radius.circular(36)),
@@ -20,6 +23,13 @@ class _AuthScreenState extends State<AuthScreen> {
       fontWeight: FontWeight.bold,
       color: Colors.blue,
   );
+
+  @override
+  void initState() {
+    super.initState();
+    _passwordController = TextEditingController();
+    _phoneController = TextEditingController();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -50,26 +60,37 @@ class _AuthScreenState extends State<AuthScreen> {
                     color: Colors.black54,
                     fontWeight: FontWeight.bold),
                 ),
-                const SizedBox(height: 26,),
-                const TextField(
+                const SizedBox(height: 30,),
+                TextField(
+                  controller: _phoneController,
                   keyboardType: TextInputType.phone,
-                  decoration: InputDecoration(
+                  maxLength: 10,
+                  style: const TextStyle(fontSize: 22,),
+                  decoration: const InputDecoration(
                     filled: true,
                     fillColor: Color(0xFFeceff1),
                     enabledBorder: borderStyle,
                     focusedBorder: borderStyle,
                     labelText: Strings.phone,
+                    contentPadding: EdgeInsets.symmetric(
+                        horizontal: 30,
+                        vertical: 15),
                   ),
                 ),
-                const SizedBox(height: 30,),
-                const TextField(
+                const SizedBox(height: 20,),
+                TextField(
+                  controller: _passwordController,
                   obscureText: true,
-                  decoration: InputDecoration(
+                  style: const TextStyle(fontSize: 20,),
+                  decoration: const InputDecoration(
                     filled: true,
                     fillColor: Color(0xFFeceff1),
                     enabledBorder: borderStyle,
                     focusedBorder: borderStyle,
                     labelText: Strings.password,
+                    contentPadding: EdgeInsets.symmetric(
+                        horizontal: 30,
+                        vertical: 15),
                   ),
                 ),
                 const SizedBox(height: 44,),
@@ -77,7 +98,9 @@ class _AuthScreenState extends State<AuthScreen> {
                   width: 196,
                   height: 50,
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      _verifyInputData(context);
+                    },
                     child: const Text(
                         Strings.enter,
                         style: TextStyle(fontSize: 22)
@@ -105,5 +128,41 @@ class _AuthScreenState extends State<AuthScreen> {
           ),
         ),
     );
+  }
+
+  bool _verifyInputData(BuildContext context) {
+    if (_phoneController.text.length < 10) {
+      _showSnackBar(context, Strings.phoneLengthIncorrect);
+      return false;
+    }
+    if (_phoneController.text != Strings.phoneNumberLogin) {
+      _showSnackBar(context, Strings.phoneIncorrect);
+      return false;
+    }
+    if (_passwordController.text.length < 6) {
+      _showSnackBar(context, Strings.passwordLengthIncorrect);
+      return false;
+    }
+    if (_passwordController.text != Strings.passwordLogin) {
+      _showSnackBar(context, Strings.passwordIncorrect);
+      return false;
+    }
+    return true;
+  }
+
+  void _showSnackBar(BuildContext context, String message) {
+    ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(message),
+          backgroundColor: Colors.red,
+        )
+    );
+  }
+
+  @override
+  void dispose() {
+    _phoneController.dispose();
+    _passwordController.dispose();
+    super.dispose();
   }
 }
