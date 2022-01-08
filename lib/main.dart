@@ -1,4 +1,4 @@
-import 'package:finalproject/screens.dart';
+import 'package:finalproject/utils/screens.dart';
 import 'package:finalproject/screens/about_screen.dart';
 import 'package:finalproject/screens/auth_screen.dart';
 import 'package:finalproject/screens/settings_screen.dart';
