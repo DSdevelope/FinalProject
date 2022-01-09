@@ -1,5 +1,5 @@
 abstract class Strings {
-  static const String phoneNumberLogin = '9203504435';
+  static const String phoneNumberLogin = '9202587151';
   static const String passwordLogin = 'student';
   static const String enterPhoneNumber = 'Введите номер телефона (10 цифр)';
   static const String phone = 'Телефон';
@@ -11,4 +11,5 @@ abstract class Strings {
   static const String passwordIncorrect = 'Введён неверный пароль';
   static const String phoneLengthIncorrect = 'Номер телефона должен содержать 10 цифр';
   static const String passwordLengthIncorrect = 'Пароль должен содержать как минимум 6 символов';
+  static const String users = 'Пользователи';
 }

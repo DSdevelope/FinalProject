@@ -1,3 +1,4 @@
+import 'package:finalproject/utils/screens.dart';
 import 'package:finalproject/utils/strings.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -66,6 +67,7 @@ class _AuthScreenState extends State<AuthScreen> {
                   keyboardType: TextInputType.phone,
                   maxLength: 10,
                   style: const TextStyle(fontSize: 22,),
+                  textInputAction: TextInputAction.next,
                   decoration: const InputDecoration(
                     filled: true,
                     fillColor: Color(0xFFeceff1),
@@ -99,7 +101,9 @@ class _AuthScreenState extends State<AuthScreen> {
                   height: 50,
                   child: ElevatedButton(
                     onPressed: () {
-                      _verifyInputData(context);
+                      if (_verifyInputData(context)) {
+                        Navigator.of(context).popAndPushNamed(Screens.users);
+                      }
                     },
                     child: const Text(
                         Strings.enter,

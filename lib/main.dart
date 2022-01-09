@@ -1,8 +1,8 @@
-import 'package:finalproject/utils/screens.dart';
 import 'package:finalproject/screens/about_screen.dart';
 import 'package:finalproject/screens/auth_screen.dart';
 import 'package:finalproject/screens/settings_screen.dart';
 import 'package:finalproject/screens/users_list_screen.dart';
+import 'package:finalproject/utils/screens.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Final Project',
       theme: ThemeData(
-        primarySwatch: Colors.blueGrey,
+        primarySwatch: Colors.blue,
       ),
       initialRoute: Screens.auth,
       routes: {

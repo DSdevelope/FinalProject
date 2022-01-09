@@ -1,3 +1,4 @@
+import 'package:finalproject/utils/strings.dart';
 import 'package:flutter/material.dart';
 
 class UsersListScreen extends StatelessWidget {
@@ -5,6 +6,25 @@ class UsersListScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text(Strings.users),
+      ),
+      body: Container(
+        height: double.infinity,
+        width: double.infinity,
+        child: ListView.separated(
+          itemCount: 20,
+          separatorBuilder: (context, _) {
+            return const Divider();
+          },
+          itemBuilder: (context, index) {
+            return ListTile(
+              title: Text('Name'),
+            );
+          },
+        ),
+      ),
+    );
   }
 }
