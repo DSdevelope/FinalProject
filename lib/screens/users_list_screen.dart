@@ -30,39 +30,35 @@ class _UsersListScreenState extends State<UsersListScreen> {
         title: const Text(Strings.users),
       ),
       body: SafeArea(
-        child: SizedBox(
-          height: double.infinity,
-          width: double.infinity,
-          child: FutureBuilder<List<User>>(
-            future: _usersList,
-            builder: (context, snapshot) {
-              if (snapshot.hasError) {
-                return Text('Error!!!  ${snapshot.error}');
-              }
-              if (!snapshot.hasData) {
-                return const Center(
-                  child: CircularProgressIndicator(),
-                );
-              }
-              return ListView.separated(
-                itemCount: snapshot.data!.length,
-                separatorBuilder: (context, _) {
-                  return const Divider();
-                },
-                itemBuilder: (context, index) {
-                  User user = snapshot.data![index];
-                  return UserListTile(
-                    id: user.id,
-                    email: user.email,
-                    name: user.name,
-                    onTap: () {
-
-                    },
-                  );
-                },
+        child: FutureBuilder<List<User>>(
+          future: _usersList,
+          builder: (context, snapshot) {
+            if (snapshot.hasError) {
+              return Text('Error!  ${snapshot.error}');
+            }
+            if (!snapshot.hasData) {
+              return const Center(
+                child: CircularProgressIndicator(),
               );
             }
-          ),
+            return ListView.separated(
+              itemCount: snapshot.data!.length,
+              separatorBuilder: (context, _) {
+                return const Divider();
+              },
+              itemBuilder: (context, index) {
+                User user = snapshot.data![index];
+                return UserListTile(
+                  id: user.id,
+                  email: user.email,
+                  name: user.name,
+                  onTap: () {
+
+                  },
+                );
+              },
+            );
+          }
         ),
       ),
     );
