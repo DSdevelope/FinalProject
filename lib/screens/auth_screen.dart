@@ -1,6 +1,5 @@
 import 'package:finalproject/utils/screens.dart';
 import 'package:finalproject/utils/strings.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class AuthScreen extends StatefulWidget {

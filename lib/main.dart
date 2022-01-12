@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      initialRoute: Screens.auth,
+      initialRoute: Screens.users,
       routes: {
         Screens.auth: (context) => const AuthScreen(),
         Screens.users: (context) => const UsersListScreen(),

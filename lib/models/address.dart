@@ -15,12 +15,12 @@ class Address {
     this.zipcode,
     this.geo);
 
-  factory Address.fromJson(Map<String, dynamic> json) {
+  factory Address.fromJson(dynamic json) {
     return Address(
-        json['street'],
-        json['suite'],
-        json['city'],
-        json['zipcode'],
+        json['street'] as String,
+        json['suite'] as String,
+        json['city'] as String,
+        json['zipcode'] as String,
         Geo.fromJson(json['geo']),
     );
   }
