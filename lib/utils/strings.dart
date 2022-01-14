@@ -12,4 +12,9 @@ abstract class Strings {
   static const String phoneLengthIncorrect = 'Номер телефона должен содержать 10 цифр';
   static const String passwordLengthIncorrect = 'Пароль должен содержать как минимум 6 символов';
   static const String users = 'Пользователи';
+  static const String email = 'email';
+  static const String address = 'address';
+  static const String phoneEng = 'phone';
+  static const String website = 'website';
+  static const String company = 'company';
 }
