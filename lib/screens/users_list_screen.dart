@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:finalproject/models/user.dart';
+import 'package:finalproject/screens/user_detail_screen.dart';
 import 'package:finalproject/user_list_tile.dart';
 import 'package:finalproject/utils/strings.dart';
 import 'package:flutter/material.dart';
@@ -53,7 +54,11 @@ class _UsersListScreenState extends State<UsersListScreen> {
                   email: user.email,
                   name: user.name,
                   onTap: () {
-
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => UserDetailScreen(user: user),
+                        ));
                   },
                 );
               },
