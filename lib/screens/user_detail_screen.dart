@@ -11,22 +11,32 @@ class UserDetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(),
-        body: SafeArea(
-          child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  Container(
-                    width: double.infinity,
-                    height: 380,
-                    decoration: const BoxDecoration(
-                        image: DecorationImage(
-                            fit: BoxFit.fitWidth,
-                            image: AssetImage('assets/avatar.png'))),
-                    child: Align(
+        // appBar: AppBar(),
+        body: SingleChildScrollView(
+            child: Column(
+              children: [
+                Container(
+                  width: double.infinity,
+                  height: 410,
+                  decoration: const BoxDecoration(
+                      image: DecorationImage(
+                          fit: BoxFit.fitWidth,
+                          image: AssetImage('assets/avatar.png'))),
+                  child: Stack(
+                    children: [
+                      Positioned(
+                        top: 60,
+                        left: 4,
+                        child: IconButton(
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                          icon: const Icon(Icons.arrow_back, color: Colors.white))
+                      ),
+                      Align(
                         alignment: Alignment.bottomLeft,
                         child: Padding(
-                          padding: const EdgeInsets.all(8.0),
+                          padding: const EdgeInsets.all(14.0),
                           child: Row(
                             textBaseline: TextBaseline.alphabetic,
                             crossAxisAlignment: CrossAxisAlignment.baseline,
@@ -46,39 +56,41 @@ class UserDetailScreen extends StatelessWidget {
                               ),
                             ],
                           ),
-                        )),
+                        ),
+                      ),
+                    ],
                   ),
-                  const SizedBox(height: 30),
-                  UserInfoTile(
-                    title: Strings.email,
-                    body: user.email,
-                  icon: Icons.email),
-                  const Divider(height: 30, thickness: 1),
-                  UserInfoTile(
-                      title: Strings.phoneEng,
-                      body: user.phone,
-                      icon: Icons.phone),
-                  const Divider(height: 30, thickness: 1),
-                  UserInfoTile(
-                      title: Strings.website,
-                      body: user.website,
-                      icon: Icons.web),
-                  const Divider(height: 30, thickness: 1),
-                  UserInfoTile(
-                      title: Strings.company,
-                      body: user.company.name,
-                      icon: Icons.work),
-                  const Divider(height: 30, thickness: 1),
-                  UserInfoTile(
-                      title: Strings.address,
-                      body: '${user.address.street}, '
-                          '${user.address.suite}, '
-                          '${user.address.city}, '
-                          '${user.address.zipcode}',
-                      icon: Icons.location_on),
-                ],
-              ),
-          ),
+                ),
+                const SizedBox(height: 30),
+                UserInfoTile(
+                  title: Strings.email,
+                  body: user.email,
+                icon: Icons.email),
+                const Divider(height: 30, thickness: 1),
+                UserInfoTile(
+                    title: Strings.phoneEng,
+                    body: user.phone,
+                    icon: Icons.phone),
+                const Divider(height: 30, thickness: 1),
+                UserInfoTile(
+                    title: Strings.website,
+                    body: user.website,
+                    icon: Icons.web),
+                const Divider(height: 30, thickness: 1),
+                UserInfoTile(
+                    title: Strings.company,
+                    body: user.company.name,
+                    icon: Icons.work),
+                const Divider(height: 30, thickness: 1),
+                UserInfoTile(
+                    title: Strings.address,
+                    body: '${user.address.street}, '
+                        '${user.address.suite}, '
+                        '${user.address.city}, '
+                        '${user.address.zipcode}',
+                    icon: Icons.location_on),
+              ],
+            ),
         )
     );
   }
