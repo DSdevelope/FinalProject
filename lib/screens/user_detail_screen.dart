@@ -1,6 +1,6 @@
 import 'package:finalproject/models/user.dart';
-import 'package:finalproject/screens/user_info_tile.dart';
 import 'package:finalproject/utils/strings.dart';
+import 'package:finalproject/widgets/user_info_tile.dart';
 import 'package:flutter/material.dart';
 
 class UserDetailScreen extends StatelessWidget {

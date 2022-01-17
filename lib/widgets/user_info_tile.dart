@@ -25,7 +25,7 @@ class UserInfoTile extends StatelessWidget {
           const SizedBox(height: 4),
           Row(
             children: [
-              Icon(icon, color: Colors.blue),
+              Icon(icon, color: Colors.lightBlue),
               const SizedBox(width: 16),
               Expanded(
                 child: Text(

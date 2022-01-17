@@ -2,8 +2,8 @@ import 'dart:convert';
 
 import 'package:finalproject/models/user.dart';
 import 'package:finalproject/screens/user_detail_screen.dart';
-import 'package:finalproject/user_list_tile.dart';
 import 'package:finalproject/utils/strings.dart';
+import 'package:finalproject/widgets/user_list_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
