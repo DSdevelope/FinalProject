@@ -3,7 +3,7 @@ class Company {
 
   Company(this.name, this.catchPhrase, this.bs);
 
-  factory Company.fromJson(dynamic json) {
+  factory Company.fromJson(Map<String, dynamic> json) {
     return Company(
       json['name'] as String,
       json['catchPhrase'] as String,

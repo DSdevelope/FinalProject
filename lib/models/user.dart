@@ -22,7 +22,7 @@ class User {
     required this.website,
     required this.company});
 
-  factory User.fromJson(dynamic json) {
+  factory User.fromJson(Map<String, dynamic> json) {
     return User(
         id: json['id'] as int,
         name: json['name'] as String,

@@ -3,7 +3,7 @@ class Geo {
 
   Geo(this.lat, this.lng);
 
-  factory Geo.fromJson(dynamic json) {
+  factory Geo.fromJson(Map<String, dynamic> json) {
     return Geo(json['lat'] as String, json['lng'] as String);
 
   }

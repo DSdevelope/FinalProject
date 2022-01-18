@@ -17,4 +17,5 @@ abstract class Strings {
   static const String phoneEng = 'phone';
   static const String website = 'website';
   static const String company = 'company';
+  static const String todos = 'TODOS';
 }

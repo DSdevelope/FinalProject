@@ -14,7 +14,9 @@ class UserInfoTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+      padding: const EdgeInsets.symmetric(
+        horizontal: 16.0,
+        vertical: 10.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -25,7 +27,7 @@ class UserInfoTile extends StatelessWidget {
           const SizedBox(height: 4),
           Row(
             children: [
-              Icon(icon, color: Colors.lightBlue),
+              Icon(icon, color: Colors.blue),
               const SizedBox(width: 16),
               Expanded(
                 child: Text(

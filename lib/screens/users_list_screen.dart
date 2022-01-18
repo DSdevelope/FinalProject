@@ -80,7 +80,7 @@ Future<List<User>> fetchUsers() async {
 
     return list;
   } else {
-    throw Exception('Failed to load post');
+    throw Exception('Failed to load users');
   }
 }
 

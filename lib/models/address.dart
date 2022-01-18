@@ -15,7 +15,7 @@ class Address {
     this.zipcode,
     this.geo);
 
-  factory Address.fromJson(dynamic json) {
+  factory Address.fromJson(Map<String, dynamic> json) {
     return Address(
         json['street'] as String,
         json['suite'] as String,
