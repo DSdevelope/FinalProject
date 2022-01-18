@@ -185,7 +185,7 @@ class UserDetailScreen extends StatelessWidget {
               );
             }
             return Container(
-              padding: const EdgeInsets.all(16),
+              padding: const EdgeInsets.all(20),
               height: MediaQuery.of(context).size.height * 0.93,
               decoration: const BoxDecoration(
                 color: Colors.white,
