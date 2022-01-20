@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class UserListTile extends StatelessWidget {
   final int id;
@@ -17,12 +18,12 @@ class UserListTile extends StatelessWidget {
     return ListTile(
       onTap: () {onTap();},
       leading: CircleAvatar(
-        radius: 24,
+        radius: 24.r,
         backgroundColor: Colors.blueGrey[300],
         child: Text(
           id.toString(),
-          style: const TextStyle(
-              fontSize: 30,
+          style: TextStyle(
+              fontSize: 30.sp,
               color: Colors.white
           ),
         ),

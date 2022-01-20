@@ -35,7 +35,9 @@ class _UsersListScreenState extends State<UsersListScreen> {
           future: _usersList,
           builder: (context, snapshot) {
             if (snapshot.hasError) {
-              return Text('Error!  ${snapshot.error}');
+              return Center(
+                child: Text('Please, check internet connection. Error! ${snapshot.error}')
+              );
             }
             if (!snapshot.hasData) {
               return const Center(

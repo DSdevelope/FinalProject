@@ -3,7 +3,9 @@ import 'dart:convert';
 import 'package:finalproject/models/user.dart';
 import 'package:finalproject/utils/strings.dart';
 import 'package:finalproject/widgets/user_info_tile.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:http/http.dart' as http;
 import 'package:url_launcher/url_launcher.dart';
 
@@ -24,16 +26,18 @@ class UserDetailScreen extends StatelessWidget {
               children: [
                 Container(
                   width: double.infinity,
-                  height: 410,
+                  height: 410.h,
                   decoration: const BoxDecoration(
                       image: DecorationImage(
                           fit: BoxFit.fitWidth,
-                          image: AssetImage('assets/avatar.png'))),
+                          image: AssetImage('assets/avatar.png')
+                      )
+                  ),
                   child: Stack(
                     children: [
                       Positioned(
-                        top: 60,
-                        left: 4,
+                        top: 60.h,
+                        left: 4.w,
                         child: IconButton(
                           onPressed: () {
                             Navigator.pop(context);
@@ -43,23 +47,23 @@ class UserDetailScreen extends StatelessWidget {
                       Align(
                         alignment: Alignment.bottomLeft,
                         child: Padding(
-                          padding: const EdgeInsets.all(14.0),
-                          child: Row(
-                            textBaseline: TextBaseline.alphabetic,
-                            crossAxisAlignment: CrossAxisAlignment.baseline,
+                          padding: EdgeInsets.only(left: 20.w, bottom: 8.h),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisSize: MainAxisSize.min,
                             children: [
                               Text(user.name,
-                                  style: const TextStyle(
-                                      fontSize: 26,
+                                  style: TextStyle(
+                                      fontSize: 26.sp,
                                       color: Colors.white,
                                       fontWeight: FontWeight.bold)),
-                              const SizedBox(width: 15),
-                              Expanded(
-                                child: Text('(${user.username})',
-                                    style: const TextStyle(
-                                      fontSize: 18,
-                                      color: Colors.white60,
-                                    )),
+                              SizedBox(width: 3.w),
+                              Text('(${user.username})',
+                                  style: TextStyle(
+                                    fontSize: 20.sp,
+                                    fontStyle: FontStyle.italic,
+                                    color: Colors.white70,
+                                  )
                               ),
                             ],
                           ),
@@ -68,7 +72,7 @@ class UserDetailScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                const SizedBox(height: 20),
+                SizedBox(height: 20.h),
                 InkWell(
                   onTap: () {sendEmail(user.email);},
                   child: UserInfoTile(
@@ -76,7 +80,7 @@ class UserDetailScreen extends StatelessWidget {
                     body: user.email,
                     icon: Icons.email),
                 ),
-                const Divider(thickness: 1),
+                Divider(thickness: 1.h),
                 InkWell(
                   onTap: () {makeCall(user.phone);},
                   child: UserInfoTile(
@@ -84,7 +88,7 @@ class UserDetailScreen extends StatelessWidget {
                       body: user.phone,
                       icon: Icons.phone),
                 ),
-                const Divider(thickness: 1),
+                Divider(thickness: 1.h),
                 InkWell(
                   onTap: () {openWebsite(user.website);},
                   child: UserInfoTile(
@@ -92,7 +96,7 @@ class UserDetailScreen extends StatelessWidget {
                       body: user.website,
                       icon: Icons.web),
                 ),
-                const Divider(thickness: 1),
+                Divider(thickness: 1.h),
                 InkWell(
                   onTap: () => showCompanyInfoDialog(context),
                   child: UserInfoTile(
@@ -100,7 +104,7 @@ class UserDetailScreen extends StatelessWidget {
                       body: user.company.name,
                       icon: Icons.work),
                 ),
-                const Divider(thickness: 1),
+                Divider(thickness: 1.h),
                 UserInfoTile(
                     title: Strings.address,
                     body: '${user.address.street}, '
@@ -108,22 +112,22 @@ class UserDetailScreen extends StatelessWidget {
                         '${user.address.city}, '
                         '${user.address.zipcode}',
                     icon: Icons.location_on),
-                const SizedBox(height: 20),
+                SizedBox(height: 20.h),
                 Padding(
-                  padding: const EdgeInsets.all(16.0),
+                  padding: EdgeInsets.all(16.0.r),
                   child: OutlinedButton(
                     onPressed: () {
                       _todoList = fetchTodos(user.id);
                       showTodosBottomSheet(context);
                       },
                     child: Padding(
-                      padding: const EdgeInsets.all(16.0),
+                      padding: EdgeInsets.all(16.0.r),
                       child: Row(
-                        children: const [
-                          Text(Strings.todos, style: TextStyle(fontSize: 20)
+                        children: [
+                          Text(Strings.todos, style: TextStyle(fontSize: 20.sp)
                           ),
-                          Spacer(),
-                          Icon(Icons.arrow_forward_ios, color: Colors.grey),
+                          const Spacer(),
+                          const Icon(Icons.arrow_forward_ios, color: Colors.grey),
                         ],
                       ),
                     ),
@@ -159,9 +163,11 @@ class UserDetailScreen extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               Text(user.company.catchPhrase),
-              const SizedBox(height: 8),
+              SizedBox(height: 8.h),
               Text('(${user.company.bs})',
-                  style: const TextStyle(fontSize: 14, color: Colors.grey)
+                  style: TextStyle(
+                      fontSize: 14.sp,
+                      color: Colors.grey)
               ),
             ],
           ),
@@ -195,13 +201,13 @@ class UserDetailScreen extends StatelessWidget {
               );
             }
             return Container(
-              padding: const EdgeInsets.all(20),
-              height: MediaQuery.of(context).size.height * 0.93,
-              decoration: const BoxDecoration(
+              padding: EdgeInsets.all(20.r),
+              height: MediaQuery.of(context).size.height * 0.93.h,
+              decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(25.0),
-                  topRight: Radius.circular(25.0),
+                  topLeft: Radius.circular(25.0.r),
+                  topRight: Radius.circular(25.0.r),
                 ),
               ),
               child: ListView.builder(
