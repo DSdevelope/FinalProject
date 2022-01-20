@@ -5,6 +5,7 @@ import 'package:finalproject/utils/strings.dart';
 import 'package:finalproject/widgets/user_info_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:url_launcher/url_launcher.dart';
 
 import '../models/todo.dart';
 
@@ -68,20 +69,29 @@ class UserDetailScreen extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 20),
-                UserInfoTile(
-                  title: Strings.email,
-                  body: user.email,
-                icon: Icons.email),
+                InkWell(
+                  onTap: () {sendEmail(user.email);},
+                  child: UserInfoTile(
+                    title: Strings.email,
+                    body: user.email,
+                    icon: Icons.email),
+                ),
                 const Divider(thickness: 1),
-                UserInfoTile(
-                    title: Strings.phoneEng,
-                    body: user.phone,
-                    icon: Icons.phone),
+                InkWell(
+                  onTap: () {makeCall(user.phone);},
+                  child: UserInfoTile(
+                      title: Strings.phoneEng,
+                      body: user.phone,
+                      icon: Icons.phone),
+                ),
                 const Divider(thickness: 1),
-                UserInfoTile(
-                    title: Strings.website,
-                    body: user.website,
-                    icon: Icons.web),
+                InkWell(
+                  onTap: () {openWebsite(user.website);},
+                  child: UserInfoTile(
+                      title: Strings.website,
+                      body: user.website,
+                      icon: Icons.web),
+                ),
                 const Divider(thickness: 1),
                 InkWell(
                   onTap: () => showCompanyInfoDialog(context),
@@ -132,8 +142,8 @@ class UserDetailScreen extends StatelessWidget {
     if (response.statusCode == 200) {
       var jsonList = jsonDecode(response.body) as List;
       List<Todo> list = jsonList.map((data) => Todo.fromJson(data)).toList();
-
       return list;
+
     } else {
       throw Exception('Failed to load todos');
     }
@@ -211,5 +221,44 @@ class UserDetailScreen extends StatelessWidget {
         );
       },
     );
+  }
+
+  Future sendEmail(String email) async {
+    final Uri emailUri = Uri(
+      scheme: 'mailto',
+      path: email,
+      query: encodeQueryParameters(<String, String>{
+        'subject': 'Hello!'
+      }),
+    );
+    if (await canLaunch(emailUri.toString())) {
+      await launch(emailUri.toString());
+    }  
+  }
+
+  Future makeCall(String tel) async {
+    final Uri emailUri = Uri(
+      scheme: 'tel',
+      path: tel,
+    );
+    if (await canLaunch(emailUri.toString())) {
+      await launch(emailUri.toString());
+    }
+  }
+
+  Future openWebsite(String website) async {
+    final Uri emailUri = Uri(
+      scheme: 'https',
+      path: website,
+    );
+    if (await canLaunch(emailUri.toString())) {
+      await launch(emailUri.toString());
+    }
+  }
+
+  String encodeQueryParameters(Map<String, String> params) {
+    return params.entries
+        .map((e) => '${Uri.encodeComponent(e.key)}=${Uri.encodeComponent(e.value)}')
+        .join('&');
   }
 }
