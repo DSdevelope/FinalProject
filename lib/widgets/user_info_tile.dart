@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class UserInfoTile extends StatelessWidget {
   const UserInfoTile({
@@ -14,9 +15,9 @@ class UserInfoTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(
-        horizontal: 16.0,
-        vertical: 10.0),
+      padding: EdgeInsets.symmetric(
+        horizontal: 16.0.w,
+        vertical: 10.0.h),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -24,16 +25,16 @@ class UserInfoTile extends StatelessWidget {
             title,
             style: const TextStyle(color: Colors.grey),
           ),
-          const SizedBox(height: 4),
+          SizedBox(height: 4.h),
           Row(
             children: [
-              Icon(icon, color: Colors.blue),
-              const SizedBox(width: 16),
+              Icon(icon, color: Colors.blue, size: 24.w),
+              SizedBox(width: 16.w),
               Expanded(
                 child: Text(
                   body,
-                  style: const TextStyle(
-                    fontSize: 20,
+                  style: TextStyle(
+                    fontSize: 19.sp,
                   ),
                 ),
               ),

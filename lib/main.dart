@@ -18,14 +18,14 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ScreenUtilInit(
       designSize: const Size(480, 1013.33),
-      minTextAdapt: true,
+      minTextAdapt: false,
       builder: () =>
           MaterialApp(
             title: 'Final Project',
             theme: ThemeData(
               primarySwatch: Colors.blue,
             ),
-            initialRoute: Screens.users,
+            initialRoute: Screens.auth,
             routes: {
               Screens.auth: (context) => const AuthScreen(),
               Screens.users: (context) => const UsersListScreen(),

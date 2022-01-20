@@ -29,14 +29,14 @@ class UserDetailScreen extends StatelessWidget {
                   height: 410.h,
                   decoration: const BoxDecoration(
                       image: DecorationImage(
-                          fit: BoxFit.fitWidth,
+                          fit: BoxFit.fill,
                           image: AssetImage('assets/avatar.png')
                       )
                   ),
                   child: Stack(
                     children: [
                       Positioned(
-                        top: 60.h,
+                        top: 65.h,
                         left: 4.w,
                         child: IconButton(
                           onPressed: () {
@@ -47,7 +47,7 @@ class UserDetailScreen extends StatelessWidget {
                       Align(
                         alignment: Alignment.bottomLeft,
                         child: Padding(
-                          padding: EdgeInsets.only(left: 20.w, bottom: 8.h),
+                          padding: EdgeInsets.only(left: 20.w, bottom: 3.h),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisSize: MainAxisSize.min,
@@ -57,10 +57,9 @@ class UserDetailScreen extends StatelessWidget {
                                       fontSize: 26.sp,
                                       color: Colors.white,
                                       fontWeight: FontWeight.bold)),
-                              SizedBox(width: 3.w),
                               Text('(${user.username})',
                                   style: TextStyle(
-                                    fontSize: 20.sp,
+                                    fontSize: 18.sp,
                                     fontStyle: FontStyle.italic,
                                     color: Colors.white70,
                                   )
@@ -124,7 +123,7 @@ class UserDetailScreen extends StatelessWidget {
                       padding: EdgeInsets.all(16.0.r),
                       child: Row(
                         children: [
-                          Text(Strings.todos, style: TextStyle(fontSize: 20.sp)
+                          Text(Strings.todos, style: TextStyle(fontSize: 18.sp)
                           ),
                           const Spacer(),
                           const Icon(Icons.arrow_forward_ios, color: Colors.grey),
@@ -202,7 +201,7 @@ class UserDetailScreen extends StatelessWidget {
             }
             return Container(
               padding: EdgeInsets.all(20.r),
-              height: MediaQuery.of(context).size.height * 0.93.h,
+              height: MediaQuery.of(context).size.height * 0.9,
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.only(
