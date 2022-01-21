@@ -203,14 +203,13 @@ class UserDetailScreen extends StatelessWidget {
               padding: EdgeInsets.all(20.r),
               height: MediaQuery.of(context).size.height * 0.9,
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: Theme.of(context).canvasColor,
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(25.0.r),
                   topRight: Radius.circular(25.0.r),
                 ),
               ),
               child: ListView.builder(
-
                 itemCount: snapshot.data!.length,
                 itemBuilder: (context, index) {
                   var todo = snapshot.data![index];

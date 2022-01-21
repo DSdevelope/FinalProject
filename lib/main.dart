@@ -23,6 +23,7 @@ class MyApp extends StatelessWidget {
           MaterialApp(
             title: 'Final Project',
             theme: ThemeData(
+              brightness: Brightness.dark,
               primarySwatch: Colors.blue,
             ),
             initialRoute: Screens.auth,

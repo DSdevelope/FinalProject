@@ -34,97 +34,100 @@ class _AuthScreenState extends State<AuthScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: Container(
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage("assets/bc_bg.jpg"),
-              fit: BoxFit.fill,
+    return Theme(
+      data: ThemeData(brightness: Brightness.light),
+      child: Scaffold(
+          body: Container(
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage("assets/bc_bg.jpg"),
+                fit: BoxFit.fill,
+              ),
             ),
-          ),
-          width: double.infinity,
-          height: double.infinity,
-          padding: EdgeInsets.symmetric(horizontal: 40.w),
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                SizedBox(height: 70.h,),
-                SizedBox(
-                  width: 250.w,
-                  height: 250.h,
-                  child: const Image(image: AssetImage('assets/logo.png')),
-                ),
-                SizedBox(height: 65.h,),
-                TextField(
-                  controller: _phoneController,
-                  keyboardType: TextInputType.phone,
-                  maxLength: 10,
-                  style: TextStyle(fontSize: 16.sp,),
-                  textInputAction: TextInputAction.next,
-                  decoration: InputDecoration(
-                    filled: true,
-                    fillColor: const Color(0xFFeceff1),
-                    enabledBorder: borderStyle,
-                    focusedBorder: borderStyle,
-                    labelText: Strings.phone,
-                    contentPadding: EdgeInsets.symmetric(
-                        horizontal: 30.w,
-                        vertical: 15.h),
+            width: double.infinity,
+            height: double.infinity,
+            padding: EdgeInsets.symmetric(horizontal: 40.w),
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  SizedBox(height: 70.h,),
+                  SizedBox(
+                    width: 250.w,
+                    height: 250.h,
+                    child: const Image(image: AssetImage('assets/logo.png')),
                   ),
-                ),
-                SizedBox(height: 20.h,),
-                TextField(
-                  controller: _passwordController,
-                  obscureText: true,
-                  style: TextStyle(fontSize: 16.sp,),
-                  decoration: InputDecoration(
-                    filled: true,
-                    fillColor: const Color(0xFFeceff1),
-                    enabledBorder: borderStyle,
-                    focusedBorder: borderStyle,
-                    labelText: Strings.password,
-                    contentPadding: EdgeInsets.symmetric(
-                        horizontal: 30.w,
-                        vertical: 15.h),
+                  SizedBox(height: 65.h,),
+                  TextField(
+                    controller: _phoneController,
+                    keyboardType: TextInputType.phone,
+                    maxLength: 10,
+                    style: TextStyle(fontSize: 16.sp,),
+                    textInputAction: TextInputAction.next,
+                    decoration: InputDecoration(
+                      filled: true,
+                      fillColor: const Color(0xFFeceff1),
+                      enabledBorder: borderStyle,
+                      focusedBorder: borderStyle,
+                      labelText: Strings.phone,
+                      contentPadding: EdgeInsets.symmetric(
+                          horizontal: 30.w,
+                          vertical: 15.h),
+                    ),
                   ),
-                ),
-                SizedBox(height: 55.h,),
-                SizedBox(
-                  width: 196.w,
-                  height: 50.h,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      if (_verifyInputData(context)) {
-                        Navigator.of(context).popAndPushNamed(Screens.users);
-                      }
-                    },
-                    child: Text(
-                        Strings.login,
-                        style: TextStyle(fontSize: 22.sp)
-                      ),
-                    style: ElevatedButton.styleFrom(
-                      primary: const Color(0xFF0079D0),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(36.0.r),
+                  SizedBox(height: 20.h,),
+                  TextField(
+                    controller: _passwordController,
+                    obscureText: true,
+                    style: TextStyle(fontSize: 16.sp,),
+                    decoration: InputDecoration(
+                      filled: true,
+                      fillColor: const Color(0xFFeceff1),
+                      enabledBorder: borderStyle,
+                      focusedBorder: borderStyle,
+                      labelText: Strings.password,
+                      contentPadding: EdgeInsets.symmetric(
+                          horizontal: 30.w,
+                          vertical: 15.h),
+                    ),
+                  ),
+                  SizedBox(height: 55.h,),
+                  SizedBox(
+                    width: 196.w,
+                    height: 50.h,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        if (_verifyInputData(context)) {
+                          Navigator.of(context).popAndPushNamed(Screens.users);
+                        }
+                      },
+                      child: Text(
+                          Strings.login,
+                          style: TextStyle(fontSize: 22.sp)
+                        ),
+                      style: ElevatedButton.styleFrom(
+                        primary: const Color(0xFF0079D0),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(36.0.r),
+                        ),
                       ),
                     ),
                   ),
-                ),
-                SizedBox(height: 52.h,),
-                InkWell(
-                  child: Text(Strings.registration, style: linkTextStyle,),
-                  onTap: () {}
+                  SizedBox(height: 52.h,),
+                  InkWell(
+                    child: Text(Strings.registration, style: linkTextStyle,),
+                    onTap: () {}
+                    ),
+                  SizedBox(height: 40.h,),
+                  InkWell(
+                    child: Text(Strings.forgotPassword, style: linkTextStyle,),
+                    onTap: () {}
                   ),
-                SizedBox(height: 40.h,),
-                InkWell(
-                  child: Text(Strings.forgotPassword, style: linkTextStyle,),
-                  onTap: () {}
-                ),
-                SizedBox(height: 40.h,),
-              ],
+                  SizedBox(height: 40.h,),
+                ],
+              ),
             ),
           ),
-        ),
+      ),
     );
   }
 
