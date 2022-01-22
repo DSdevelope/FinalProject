@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:finalproject/models/user.dart';
 import 'package:finalproject/screens/user_detail_screen.dart';
 import 'package:finalproject/utils/strings.dart';
+import 'package:finalproject/widgets/app_drawer.dart';
 import 'package:finalproject/widgets/user_list_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -30,6 +31,7 @@ class _UsersListScreenState extends State<UsersListScreen> {
       appBar: AppBar(
         title: const Text(Strings.users),
       ),
+      drawer: const AppDrawer(),
       body: SafeArea(
         child: FutureBuilder<List<User>>(
           future: _usersList,

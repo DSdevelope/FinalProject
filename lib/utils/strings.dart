@@ -17,4 +17,8 @@ abstract class Strings {
   static const String website = 'website';
   static const String company = 'company';
   static const String todos = 'TODOS';
+  static const String settings = 'Настройки';
+  static const String about = 'О программе';
+  static const String logout = 'Выйти из аккаунта';
+  static const String exit = 'Закрыть приложение';
 }

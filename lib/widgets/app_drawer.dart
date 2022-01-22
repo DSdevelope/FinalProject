@@ -1,5 +1,7 @@
+import 'package:finalproject/utils/strings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AppDrawer extends StatelessWidget {
   const AppDrawer({Key? key}) : super(key: key);
@@ -11,44 +13,45 @@ class AppDrawer extends StatelessWidget {
         padding: EdgeInsets.zero,
         children: [
           DrawerHeader(
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage('assets/flutter.jpg'),
-                fit: BoxFit.cover,
+            decoration: BoxDecoration(
+              color: Theme.of(context).primaryColor,
+              image: const DecorationImage(
+                image: AssetImage('assets/avatar_drawer.png'),
+                fit: BoxFit.contain,
               ),
             ),
             child: Align(
-                alignment: Alignment.bottomRight,
-                child: Text('Navigation',
-                    style: TextStyle(fontSize: 22, color: Colors.white.withOpacity(0.5))
+                alignment: Alignment.bottomCenter,
+                child: Text(Strings.phoneNumberDefault,
+                    style: TextStyle(fontSize: 18.sp, color: Colors.grey)
                 )
             ),
           ),
           ListTile(
             leading: const Icon(Icons.settings),
-            title: const Text('Настройки'),
+            title: const Text(Strings.settings),
             onTap: () {
               Navigator.of(context).popAndPushNamed('/settings');
             },
           ),
           ListTile(
-            leading: const Icon(Icons.info_outline),
-            title: const Text('О программе'),
+            leading: const Icon(Icons.info_outline, color: Colors.green),
+            title: const Text(Strings.about),
             onTap: () {
               Navigator.of(context).popAndPushNamed('/about');
             },
           ),
           const Divider(),
           ListTile(
-            leading: const Icon(Icons.account_circle),
-            title: const Text('Профиль'),
+            leading: const Icon(Icons.logout, color: Colors.orangeAccent),
+            title: const Text(Strings.logout),
             onTap: () {
               Navigator.of(context).popAndPushNamed('/profile');
             },
           ),
           ListTile(
-            leading: const Icon(Icons.exit_to_app),
-            title: const Text('Выход'),
+            leading: const Icon(Icons.close, color: Colors.red),
+            title: const Text(Strings.exit),
             onTap: () {
               SystemNavigator.pop();
             },
