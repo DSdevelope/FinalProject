@@ -5,6 +5,7 @@ import 'package:finalproject/screens/users_list_screen.dart';
 import 'package:finalproject/utils/screens.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get_navigation/src/root/get_material_app.dart';
 
 void main() {
   runApp(const MyApp());
@@ -20,12 +21,10 @@ class MyApp extends StatelessWidget {
       designSize: const Size(480, 1013.33),
       minTextAdapt: false,
       builder: () =>
-          MaterialApp(
+          GetMaterialApp(
             title: 'Final Project',
-            theme: ThemeData(
-              brightness: Brightness.light,
-              primarySwatch: Colors.blue,
-            ),
+            theme: ThemeData.light(),
+            darkTheme: ThemeData.dark(),
             initialRoute: Screens.users,
             routes: {
               Screens.auth: (context) => const AuthScreen(),

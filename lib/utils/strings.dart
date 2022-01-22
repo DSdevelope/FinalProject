@@ -21,4 +21,8 @@ abstract class Strings {
   static const String about = 'О программе';
   static const String logout = 'Выйти из аккаунта';
   static const String exit = 'Закрыть приложение';
+  static const String aboutText = 'Итоговая курсовая работа "Final Project"\nавтор - Дмитрий Стоянов\nянварь 2022';
+  static const String theme = 'ТЕМА ПРИЛОЖЕНИЯ';
+  static const String light = 'Светлая';
+  static const String dark = 'Тёмная';
 }

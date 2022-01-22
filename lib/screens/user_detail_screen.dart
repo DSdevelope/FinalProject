@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:finalproject/models/user.dart';
 import 'package:finalproject/utils/strings.dart';
+import 'package:finalproject/widgets/app_drawer.dart';
 import 'package:finalproject/widgets/user_info_tile.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -20,8 +21,9 @@ class UserDetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        // appBar: AppBar(),
-        body: SingleChildScrollView(
+      // appBar: AppBar(),
+      drawer: const AppDrawer(),
+      body: SingleChildScrollView(
             child: Column(
               children: [
                 Container(
@@ -42,7 +44,22 @@ class UserDetailScreen extends StatelessWidget {
                           onPressed: () {
                             Navigator.pop(context);
                           },
-                          icon: const Icon(Icons.arrow_back, color: Colors.white))
+                          icon: const Icon(Icons.arrow_back, color: Colors.white)
+                        )
+                      ),
+                      Positioned(
+                          top: 65.h,
+                          right: 4.w,
+                          child: Builder(
+                            builder: (context) {
+                              return IconButton(
+                                  onPressed: () {
+                                    Scaffold.of(context).openDrawer();
+                                  },
+                                  icon: const Icon(Icons.menu, color: Colors.white)
+                              );
+                            }
+                          )
                       ),
                       Align(
                         alignment: Alignment.bottomLeft,
