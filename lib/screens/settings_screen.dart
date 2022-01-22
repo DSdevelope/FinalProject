@@ -1,7 +1,9 @@
+import 'package:finalproject/utils/prefkeys.dart';
 import 'package:finalproject/utils/strings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({Key? key}) : super(key: key);
@@ -11,7 +13,16 @@ class SettingsScreen extends StatefulWidget {
 }
 
 class _SettingsScreenState extends State<SettingsScreen> {
-  var _currentTheme = Brightness.light;
+  late Brightness _currentTheme;
+  final _storage = GetStorage();
+
+
+  @override
+  void initState() {
+    super.initState();
+    bool isDarkMode = _storage.read(PrefKeys.isDarkTheme) ?? false;
+    _currentTheme = isDarkMode? Brightness.dark : Brightness.light;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,6 +54,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       onChanged: (value) =>
                         setState(() {
                           Get.changeThemeMode(ThemeMode.light);
+                          _storage.write(PrefKeys.isDarkTheme, false);
                           _currentTheme = value!;
                         }),
                     ),
@@ -55,6 +67,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       onChanged: (value) =>
                           setState(() {
                             Get.changeThemeMode(ThemeMode.dark);
+                            _storage.write(PrefKeys.isDarkTheme, true);
                             _currentTheme = value!;
                           }),
                     ),

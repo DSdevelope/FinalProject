@@ -2,12 +2,15 @@ import 'package:finalproject/screens/about_screen.dart';
 import 'package:finalproject/screens/auth_screen.dart';
 import 'package:finalproject/screens/settings_screen.dart';
 import 'package:finalproject/screens/users_list_screen.dart';
+import 'package:finalproject/utils/prefkeys.dart';
 import 'package:finalproject/utils/screens.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:get_storage/get_storage.dart';
 
-void main() {
+void main() async {
+  await GetStorage.init();
   runApp(const MyApp());
 }
 
@@ -25,6 +28,7 @@ class MyApp extends StatelessWidget {
             title: 'Final Project',
             theme: ThemeData.light(),
             darkTheme: ThemeData.dark(),
+            themeMode: getThemeMode(),
             initialRoute: Screens.users,
             routes: {
               Screens.auth: (context) => const AuthScreen(),
@@ -35,5 +39,14 @@ class MyApp extends StatelessWidget {
           ),
 
     );
+  }
+
+  ThemeMode getThemeMode() {
+    var mode = ThemeMode.light;
+    bool isDarkMode = GetStorage().read(PrefKeys.isDarkTheme) ?? false;
+    if (isDarkMode) {
+      mode = ThemeMode.dark;
+    }
+    return mode;
   }
 }
