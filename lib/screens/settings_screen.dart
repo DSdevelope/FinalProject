@@ -53,8 +53,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       ),
                       onChanged: (value) =>
                         setState(() {
-                          Get.changeThemeMode(ThemeMode.light);
                           _storage.write(PrefKeys.isDarkTheme, false);
+                          Get.changeThemeMode(ThemeMode.light);
                           _currentTheme = value!;
                         }),
                     ),
@@ -66,8 +66,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       ),
                       onChanged: (value) =>
                           setState(() {
-                            Get.changeThemeMode(ThemeMode.dark);
                             _storage.write(PrefKeys.isDarkTheme, true);
+                            Get.changeThemeMode(ThemeMode.dark);
                             _currentTheme = value!;
                           }),
                     ),

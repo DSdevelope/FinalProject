@@ -42,11 +42,7 @@ class MyApp extends StatelessWidget {
   }
 
   ThemeMode getThemeMode() {
-    var mode = ThemeMode.light;
     bool isDarkMode = GetStorage().read(PrefKeys.isDarkTheme) ?? false;
-    if (isDarkMode) {
-      mode = ThemeMode.dark;
-    }
-    return mode;
+    return isDarkMode? ThemeMode.dark : ThemeMode.light;
   }
 }
