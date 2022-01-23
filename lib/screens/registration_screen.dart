@@ -13,6 +13,7 @@ class RegistrationScreen extends StatefulWidget {
 class _RegistrationScreenState extends State<RegistrationScreen> {
   late TextEditingController _phoneController;
   late TextEditingController _passwordController;
+  late TextEditingController _confirmController;
 
   final OutlineInputBorder borderStyle = OutlineInputBorder(
       borderRadius: BorderRadius.all(Radius.circular(36.r)),
@@ -22,7 +23,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   final TextStyle linkTextStyle = TextStyle(
       fontSize: 18.sp,
       fontWeight: FontWeight.bold,
-      color: Colors.blue,
+      color: Colors.blue[700],
   );
 
   @override
@@ -30,6 +31,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     super.initState();
     _passwordController = TextEditingController();
     _phoneController = TextEditingController();
+    _confirmController = TextEditingController();
   }
 
   @override
@@ -37,7 +39,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     return Theme(
       data: ThemeData(brightness: Brightness.light),
       child: Scaffold(
-          body: Container(
+        body: Container(
             decoration: const BoxDecoration(
               image: DecorationImage(
                 image: AssetImage("assets/beach.jpg"),
@@ -50,18 +52,19 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  SizedBox(height: 70.h,),
+                  SizedBox(height: 55.h,),
                   SizedBox(
-                    width: 250.w,
                     height: 250.h,
-                    child: const Image(image: AssetImage('assets/logo.png')),
+                    child: const Image(
+                      image: AssetImage('assets/welcome.png'),
+                      color: Colors.white70,),
                   ),
-                  SizedBox(height: 65.h,),
+                  SizedBox(height: 50.h,),
                   TextField(
                     controller: _phoneController,
                     keyboardType: TextInputType.phone,
                     maxLength: 10,
-                    style: TextStyle(fontSize: 16.sp,),
+                    style: TextStyle(fontSize: 17.sp,),
                     textInputAction: TextInputAction.next,
                     decoration: InputDecoration(
                       filled: true,
@@ -69,25 +72,43 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                       enabledBorder: borderStyle,
                       focusedBorder: borderStyle,
                       labelText: Strings.phone,
+                      prefixText: Strings.phonePrefix,
                       contentPadding: EdgeInsets.symmetric(
                           horizontal: 30.w,
-                          vertical: 15.h),
+                          vertical: 18.h),
                     ),
                   ),
                   SizedBox(height: 20.h,),
                   TextField(
                     controller: _passwordController,
                     obscureText: true,
-                    style: TextStyle(fontSize: 16.sp,),
+                    style: TextStyle(fontSize: 17.sp,),
+                    textInputAction: TextInputAction.next,
                     decoration: InputDecoration(
                       filled: true,
                       fillColor: const Color(0xFFeceff1),
                       enabledBorder: borderStyle,
                       focusedBorder: borderStyle,
-                      labelText: Strings.password,
+                      labelText: Strings.password6symbols,
                       contentPadding: EdgeInsets.symmetric(
                           horizontal: 30.w,
-                          vertical: 15.h),
+                          vertical: 18.h),
+                    ),
+                  ),
+                  SizedBox(height: 38.h,),
+                  TextField(
+                    controller: _confirmController,
+                    obscureText: true,
+                    style: TextStyle(fontSize: 17.sp,),
+                    decoration: InputDecoration(
+                      filled: true,
+                      fillColor: const Color(0xFFeceff1),
+                      enabledBorder: borderStyle,
+                      focusedBorder: borderStyle,
+                      labelText: Strings.confirmPassword,
+                      contentPadding: EdgeInsets.symmetric(
+                          horizontal: 30.w,
+                          vertical: 18.h),
                     ),
                   ),
                   SizedBox(height: 55.h,),
@@ -96,7 +117,8 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                     child: ElevatedButton(
                       onPressed: () {
                         if (_verifyInputData(context)) {
-                          Navigator.of(context).popAndPushNamed(Screens.users);
+                          saveUserData();
+                          // Navigator.of(context).popAndPushNamed(Screens.users);
                         }
                       },
                       child: Padding(
@@ -116,14 +138,18 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   ),
                   SizedBox(height: 52.h,),
                   InkWell(
-                    child: Text(Strings.loginToAccount, style: linkTextStyle,),
-                    onTap: () {}
+                    child: Container(
+                      padding: EdgeInsets.all(8.r),
+                      decoration: BoxDecoration(
+                        color: Colors.white38,
+                        borderRadius: BorderRadius.circular(36.0.r),
+                      ),
+                      child: Text(Strings.loginToAccount, style: linkTextStyle,)
                     ),
-                  SizedBox(height: 40.h,),
-                  InkWell(
-                    child: Text(Strings.forgotPassword, style: linkTextStyle,),
-                    onTap: () {}
-                  ),
+                    onTap: () {
+                      Navigator.of(context).popAndPushNamed(Screens.auth);
+                    }
+                    ),
                   SizedBox(height: 40.h,),
                 ],
               ),
@@ -138,16 +164,16 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
       _showSnackBar(context, Strings.phoneLengthIncorrect);
       return false;
     }
-    if (_phoneController.text != Strings.phoneNumberDefault) {
-      _showSnackBar(context, Strings.phoneIncorrect);
-      return false;
-    }
     if (_passwordController.text.length < 6) {
       _showSnackBar(context, Strings.passwordLengthIncorrect);
       return false;
     }
-    if (_passwordController.text != Strings.passwordDefault) {
-      _showSnackBar(context, Strings.passwordIncorrect);
+    if (_confirmController.text.isEmpty) {
+      _showSnackBar(context, Strings.confirmPassword);
+      return false;
+    }
+    if (_confirmController.text != _passwordController.text) {
+      _showSnackBar(context, Strings.confirmIncorrect);
       return false;
     }
     return true;
@@ -162,10 +188,17 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     );
   }
 
+  void saveUserData() {
+    print(_phoneController.text);
+    print(_passwordController.text);
+    print(_confirmController.text);
+  }
+
   @override
   void dispose() {
     _phoneController.dispose();
     _passwordController.dispose();
+    _confirmController.dispose();
     super.dispose();
   }
 }

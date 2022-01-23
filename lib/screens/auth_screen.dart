@@ -61,7 +61,7 @@ class _AuthScreenState extends State<AuthScreen> {
                     controller: _phoneController,
                     keyboardType: TextInputType.phone,
                     maxLength: 10,
-                    style: TextStyle(fontSize: 16.sp,),
+                    style: TextStyle(fontSize: 17.sp,),
                     textInputAction: TextInputAction.next,
                     decoration: InputDecoration(
                       filled: true,
@@ -69,16 +69,17 @@ class _AuthScreenState extends State<AuthScreen> {
                       enabledBorder: borderStyle,
                       focusedBorder: borderStyle,
                       labelText: Strings.phone,
+                      prefixText: Strings.phonePrefix,
                       contentPadding: EdgeInsets.symmetric(
                           horizontal: 30.w,
-                          vertical: 15.h),
+                          vertical: 18.h),
                     ),
                   ),
                   SizedBox(height: 20.h,),
                   TextField(
                     controller: _passwordController,
                     obscureText: true,
-                    style: TextStyle(fontSize: 16.sp,),
+                    style: TextStyle(fontSize: 17.sp,),
                     decoration: InputDecoration(
                       filled: true,
                       fillColor: const Color(0xFFeceff1),
@@ -87,7 +88,7 @@ class _AuthScreenState extends State<AuthScreen> {
                       labelText: Strings.password,
                       contentPadding: EdgeInsets.symmetric(
                           horizontal: 30.w,
-                          vertical: 15.h),
+                          vertical: 18.h),
                     ),
                   ),
                   SizedBox(height: 55.h,),
@@ -118,7 +119,7 @@ class _AuthScreenState extends State<AuthScreen> {
                   InkWell(
                     child: Text(Strings.registration, style: linkTextStyle,),
                     onTap: () {
-                      Navigator.of(context).pushNamed(Screens.registration);
+                      Navigator.of(context).popAndPushNamed(Screens.registration);
                     }
                     ),
                   SizedBox(height: 40.h,),
