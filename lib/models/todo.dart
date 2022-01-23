@@ -3,7 +3,7 @@ class Todo {
     userId,
     id;
   final String title;
-  final bool completed;
+  bool completed;
 
   Todo(
     this.userId,
