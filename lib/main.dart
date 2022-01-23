@@ -1,5 +1,6 @@
 import 'package:finalproject/screens/about_screen.dart';
 import 'package:finalproject/screens/auth_screen.dart';
+import 'package:finalproject/screens/registration_screen.dart';
 import 'package:finalproject/screens/settings_screen.dart';
 import 'package:finalproject/screens/users_list_screen.dart';
 import 'package:finalproject/utils/prefkeys.dart';
@@ -29,9 +30,10 @@ class MyApp extends StatelessWidget {
             theme: ThemeData.light(),
             darkTheme: ThemeData.dark(),
             themeMode: getThemeMode(),
-            initialRoute: Screens.users,
+            initialRoute: Screens.auth,
             routes: {
               Screens.auth: (context) => const AuthScreen(),
+              Screens.registration: (context) => const RegistrationScreen(),
               Screens.users: (context) => const UsersListScreen(),
               Screens.about: (context) => const AboutScreen(),
               Screens.settings: (context) => const SettingsScreen(),

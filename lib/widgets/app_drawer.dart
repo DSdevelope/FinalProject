@@ -5,11 +5,12 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AppDrawer extends StatelessWidget {
-  const AppDrawer({Key? key}) : super(key: key);
+  AppDrawer({Key? key}) : super(key: key);
+
+  final itemTextStyle = TextStyle(fontSize: 15.sp);
 
   @override
   Widget build(BuildContext context) {
-    var itemTextStyle = TextStyle(fontSize: 15.sp);
     return Drawer(
       child: ListView(
         padding: EdgeInsets.zero,

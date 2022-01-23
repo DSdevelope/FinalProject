@@ -31,7 +31,7 @@ class _UsersListScreenState extends State<UsersListScreen> {
       appBar: AppBar(
         title: const Text(Strings.users),
       ),
-      drawer: const AppDrawer(),
+      drawer: AppDrawer(),
       body: SafeArea(
         child: FutureBuilder<List<User>>(
           future: _usersList,

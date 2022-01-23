@@ -23,7 +23,7 @@ class UserDetailScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       // appBar: AppBar(),
-      drawer: const AppDrawer(),
+      drawer: AppDrawer(),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -135,7 +135,10 @@ class UserDetailScreen extends StatelessWidget {
                     children: [
                       Text(Strings.todos, style: TextStyle(fontSize: 18.sp)),
                       const Spacer(),
-                      const Icon(Icons.arrow_forward_ios, color: Colors.grey),
+                      Icon(
+                        Icons.arrow_forward_ios,
+                        size: 16.r,
+                        color: Colors.grey[400]),
                     ],
                   ),
                 ),

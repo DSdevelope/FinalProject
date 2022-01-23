@@ -3,14 +3,14 @@ import 'package:finalproject/utils/strings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class AuthScreen extends StatefulWidget {
-  const AuthScreen({Key? key}) : super(key: key);
+class RegistrationScreen extends StatefulWidget {
+  const RegistrationScreen({Key? key}) : super(key: key);
 
   @override
-  _AuthScreenState createState() => _AuthScreenState();
+  _RegistrationScreenState createState() => _RegistrationScreenState();
 }
 
-class _AuthScreenState extends State<AuthScreen> {
+class _RegistrationScreenState extends State<RegistrationScreen> {
   late TextEditingController _phoneController;
   late TextEditingController _passwordController;
 
@@ -40,7 +40,7 @@ class _AuthScreenState extends State<AuthScreen> {
           body: Container(
             decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage("assets/bc_bg.jpg"),
+                image: AssetImage("assets/beach.jpg"),
                 fit: BoxFit.fill,
               ),
             ),
@@ -100,9 +100,9 @@ class _AuthScreenState extends State<AuthScreen> {
                         }
                       },
                       child: Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 26.w),
+                        padding: EdgeInsets.symmetric(horizontal: 10.w),
                         child: Text(
-                            Strings.login,
+                            Strings.register,
                             style: TextStyle(fontSize: 22.sp)
                           ),
                       ),
@@ -116,10 +116,8 @@ class _AuthScreenState extends State<AuthScreen> {
                   ),
                   SizedBox(height: 52.h,),
                   InkWell(
-                    child: Text(Strings.registration, style: linkTextStyle,),
-                    onTap: () {
-                      Navigator.of(context).pushNamed(Screens.registration);
-                    }
+                    child: Text(Strings.loginToAccount, style: linkTextStyle,),
+                    onTap: () {}
                     ),
                   SizedBox(height: 40.h,),
                   InkWell(
