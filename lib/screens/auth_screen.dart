@@ -1,7 +1,10 @@
+import 'package:finalproject/screens/registration_screen.dart';
+import 'package:finalproject/utils/prefkeys.dart';
 import 'package:finalproject/utils/screens.dart';
 import 'package:finalproject/utils/strings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get_storage/get_storage.dart';
 
 class AuthScreen extends StatefulWidget {
   const AuthScreen({Key? key}) : super(key: key);
@@ -13,17 +16,7 @@ class AuthScreen extends StatefulWidget {
 class _AuthScreenState extends State<AuthScreen> {
   late TextEditingController _phoneController;
   late TextEditingController _passwordController;
-
-  final OutlineInputBorder borderStyle = OutlineInputBorder(
-      borderRadius: BorderRadius.all(Radius.circular(36.r)),
-      borderSide: BorderSide(
-          color: Colors.transparent, width: 2.w)
-  );
-  final TextStyle linkTextStyle = TextStyle(
-      fontSize: 18.sp,
-      fontWeight: FontWeight.bold,
-      color: Colors.blue,
-  );
+  final _storage = GetStorage();
 
   @override
   void initState() {
@@ -121,7 +114,7 @@ class _AuthScreenState extends State<AuthScreen> {
                     onTap: () {
                       Navigator.of(context).popAndPushNamed(Screens.registration);
                     }
-                    ),
+                  ),
                   SizedBox(height: 40.h,),
                   InkWell(
                     child: Text(Strings.forgotPassword, style: linkTextStyle,),
@@ -141,15 +134,18 @@ class _AuthScreenState extends State<AuthScreen> {
       _showSnackBar(context, Strings.phoneLengthIncorrect);
       return false;
     }
-    if (_phoneController.text != Strings.phoneNumberDefault) {
+    String phoneNumber = _storage.read(PrefKeys.phoneNumber) ?? Strings.phoneNumberDefault;
+    if (_phoneController.text != phoneNumber) {
       _showSnackBar(context, Strings.phoneIncorrect);
       return false;
     }
+
     if (_passwordController.text.length < 6) {
       _showSnackBar(context, Strings.passwordLengthIncorrect);
       return false;
     }
-    if (_passwordController.text != Strings.passwordDefault) {
+    String password = _storage.read(PrefKeys.password) ?? Strings.passwordDefault;
+    if (_passwordController.text != password) {
       _showSnackBar(context, Strings.passwordIncorrect);
       return false;
     }

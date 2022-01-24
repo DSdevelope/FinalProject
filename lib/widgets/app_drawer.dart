@@ -1,12 +1,13 @@
+import 'package:finalproject/utils/prefkeys.dart';
 import 'package:finalproject/utils/screens.dart';
 import 'package:finalproject/utils/strings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get_storage/get_storage.dart';
 
 class AppDrawer extends StatelessWidget {
   AppDrawer({Key? key}) : super(key: key);
-
   final itemTextStyle = TextStyle(fontSize: 15.sp);
 
   @override
@@ -25,7 +26,7 @@ class AppDrawer extends StatelessWidget {
             ),
             child: Align(
                 alignment: Alignment.bottomCenter,
-                child: Text(Strings.phoneNumberDefault,
+                child: Text(Strings.phonePrefix + GetStorage().read(PrefKeys.phoneNumber),
                     style: TextStyle(fontSize: 18.sp, color: Colors.grey[400])
                 )
             ),

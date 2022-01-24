@@ -67,13 +67,16 @@ class UserDetailScreen extends StatelessWidget {
                               style: TextStyle(
                                   fontSize: 26.sp,
                                   color: Colors.white,
-                                  fontWeight: FontWeight.bold)),
+                                  fontWeight: FontWeight.bold)
+                          ),
                           Text('(${user.username})',
                               style: TextStyle(
                                 fontSize: 18.sp,
                                 fontStyle: FontStyle.italic,
+                                fontWeight: FontWeight.bold,
                                 color: Colors.white70,
-                              )),
+                              )
+                          ),
                         ],
                       ),
                     ),

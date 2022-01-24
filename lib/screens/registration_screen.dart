@@ -1,7 +1,20 @@
+import 'package:finalproject/utils/prefkeys.dart';
 import 'package:finalproject/utils/screens.dart';
 import 'package:finalproject/utils/strings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get_storage/get_storage.dart';
+
+final OutlineInputBorder borderStyle = OutlineInputBorder(
+    borderRadius: BorderRadius.all(Radius.circular(36.r)),
+    borderSide: BorderSide(
+        color: Colors.transparent, width: 2.w)
+);
+final TextStyle linkTextStyle = TextStyle(
+  fontSize: 18.sp,
+  fontWeight: FontWeight.bold,
+  color: Colors.blue[700],
+);
 
 class RegistrationScreen extends StatefulWidget {
   const RegistrationScreen({Key? key}) : super(key: key);
@@ -14,17 +27,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   late TextEditingController _phoneController;
   late TextEditingController _passwordController;
   late TextEditingController _confirmController;
-
-  final OutlineInputBorder borderStyle = OutlineInputBorder(
-      borderRadius: BorderRadius.all(Radius.circular(36.r)),
-      borderSide: BorderSide(
-          color: Colors.transparent, width: 2.w)
-  );
-  final TextStyle linkTextStyle = TextStyle(
-      fontSize: 18.sp,
-      fontWeight: FontWeight.bold,
-      color: Colors.blue[700],
-  );
+  final _storage = GetStorage();
 
   @override
   void initState() {
@@ -118,7 +121,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                       onPressed: () {
                         if (_verifyInputData(context)) {
                           saveUserData();
-                          // Navigator.of(context).popAndPushNamed(Screens.users);
+                          Navigator.of(context).popAndPushNamed(Screens.users);
                         }
                       },
                       child: Padding(
@@ -164,6 +167,10 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
       _showSnackBar(context, Strings.phoneLengthIncorrect);
       return false;
     }
+    if (_phoneController.text == _storage.read(PrefKeys.phoneNumber)) {
+      _showSnackBar(context, Strings.userAlreadyRegistered);
+      return false;
+    }
     if (_passwordController.text.length < 6) {
       _showSnackBar(context, Strings.passwordLengthIncorrect);
       return false;
@@ -189,9 +196,8 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   }
 
   void saveUserData() {
-    print(_phoneController.text);
-    print(_passwordController.text);
-    print(_confirmController.text);
+    _storage.write(PrefKeys.phoneNumber, _phoneController.text);
+    _storage.write(PrefKeys.password, _passwordController.text);
   }
 
   @override

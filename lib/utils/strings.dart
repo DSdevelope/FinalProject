@@ -1,5 +1,5 @@
 abstract class Strings {
-  static const String phoneNumberDefault = '9202587151';
+  static const String phoneNumberDefault = '9001112233';
   static const String phonePrefix = '+7';
   static const String passwordDefault = 'student';
   static const String phone = 'Телефон (10 цифр)';
@@ -16,6 +16,7 @@ abstract class Strings {
   static const String confirmIncorrect = 'Пароли не совпадают';
   static const String phoneLengthIncorrect = 'Номер телефона должен содержать 10 цифр';
   static const String passwordLengthIncorrect = 'Пароль должен содержать как минимум 6 символов';
+  static const String userAlreadyRegistered = 'Пользователь с таким номером уже существует';
   static const String sendCodeAgain = 'Прислать КОД ещё раз';
   static const String users = 'Пользователи';
   static const String email = 'email';

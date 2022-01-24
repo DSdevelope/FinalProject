@@ -10,10 +10,15 @@ class AboutScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: const Text(Strings.about)),
       body: Center(
-        child: Text(
-          Strings.aboutText,
-          textAlign: TextAlign.center,
-          style: TextStyle(fontSize: 18.sp)),
+        child: Card(
+          child: Padding(
+            padding: EdgeInsets.all(30.r),
+            child: Text(
+              Strings.aboutText,
+              textAlign: TextAlign.center,
+              style: TextStyle(fontSize: 18.sp)),
+          ),
+        ),
       ),
     );
   }
