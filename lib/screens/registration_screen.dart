@@ -98,7 +98,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                           vertical: 18.h),
                     ),
                   ),
-                  SizedBox(height: 38.h,),
+                  SizedBox(height: 45.h,),
                   TextField(
                     controller: _confirmController,
                     obscureText: true,
@@ -116,7 +116,6 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   ),
                   SizedBox(height: 55.h,),
                   SizedBox(
-                    height: 50.h,
                     child: ElevatedButton(
                       onPressed: () {
                         if (_verifyInputData(context)) {
@@ -125,7 +124,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                         }
                       },
                       child: Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 10.w),
+                        padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 8.h),
                         child: Text(
                             Strings.register,
                             style: TextStyle(fontSize: 22.sp)

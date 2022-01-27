@@ -86,7 +86,6 @@ class _AuthScreenState extends State<AuthScreen> {
                   ),
                   SizedBox(height: 55.h,),
                   SizedBox(
-                    height: 50.h,
                     child: ElevatedButton(
                       onPressed: () {
                         if (_verifyInputData(context)) {
@@ -94,7 +93,7 @@ class _AuthScreenState extends State<AuthScreen> {
                         }
                       },
                       child: Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 26.w),
+                        padding: EdgeInsets.symmetric(horizontal: 26.w, vertical: 8.h),
                         child: Text(
                             Strings.login,
                             style: TextStyle(fontSize: 22.sp)

@@ -6,11 +6,13 @@ class UserInfoTile extends StatelessWidget {
     Key? key,
     required this.title,
     required this.body,
-    required this.icon,
+    required this.prefixIcon,
+    this.postfixIcon,
   }) : super(key: key);
 
   final String title, body;
-  final IconData icon;
+  final IconData prefixIcon;
+  final IconData? postfixIcon;
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +30,7 @@ class UserInfoTile extends StatelessWidget {
           SizedBox(height: 4.h),
           Row(
             children: [
-              Icon(icon, color: Colors.blue, size: 24.w),
+              Icon(prefixIcon, color: Colors.blue, size: 24.w),
               SizedBox(width: 16.w),
               Expanded(
                 child: Text(
@@ -38,6 +40,9 @@ class UserInfoTile extends StatelessWidget {
                   ),
                 ),
               ),
+              postfixIcon == null?
+              const SizedBox():
+              Icon(postfixIcon, color: Colors.grey[400], size: 18.w),
             ],
           )
         ],

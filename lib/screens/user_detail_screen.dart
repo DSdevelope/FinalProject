@@ -90,7 +90,10 @@ class UserDetailScreen extends StatelessWidget {
                 sendEmail(user.email);
               },
               child: UserInfoTile(
-                  title: Strings.email, body: user.email, icon: Icons.email),
+                title: Strings.email,
+                body: user.email,
+                prefixIcon: Icons.email,
+                postfixIcon: Icons.arrow_forward_ios),
             ),
             Divider(thickness: 1.h),
             InkWell(
@@ -98,7 +101,10 @@ class UserDetailScreen extends StatelessWidget {
                 makeCall(user.phone);
               },
               child: UserInfoTile(
-                  title: Strings.phoneEng, body: user.phone, icon: Icons.phone),
+                title: Strings.phoneEng,
+                body: user.phone,
+                prefixIcon: Icons.phone,
+                postfixIcon: Icons.arrow_forward_ios),
             ),
             Divider(thickness: 1.h),
             InkWell(
@@ -106,15 +112,19 @@ class UserDetailScreen extends StatelessWidget {
                 openWebsite(user.website);
               },
               child: UserInfoTile(
-                  title: Strings.website, body: user.website, icon: Icons.web),
+                title: Strings.website,
+                body: user.website,
+                prefixIcon: Icons.web,
+                postfixIcon: Icons.arrow_forward_ios),
             ),
             Divider(thickness: 1.h),
             InkWell(
               onTap: () => showCompanyInfoDialog(context),
               child: UserInfoTile(
-                  title: Strings.company,
-                  body: user.company.name,
-                  icon: Icons.work),
+                title: Strings.company,
+                body: user.company.name,
+                prefixIcon: Icons.work,
+                postfixIcon: Icons.arrow_forward_ios),
             ),
             Divider(thickness: 1.h),
             UserInfoTile(
@@ -123,7 +133,7 @@ class UserDetailScreen extends StatelessWidget {
                     '${user.address.suite}, '
                     '${user.address.city}, '
                     '${user.address.zipcode}',
-                icon: Icons.location_on),
+                prefixIcon: Icons.location_on),
             SizedBox(height: 20.h),
             Padding(
               padding: EdgeInsets.all(16.0.r),
