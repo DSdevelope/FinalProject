@@ -26,9 +26,11 @@ class AppDrawer extends StatelessWidget {
             ),
             child: Align(
                 alignment: Alignment.bottomCenter,
-                child: Text(Strings.phonePrefix + GetStorage().read(PrefKeys.phoneNumber),
+                child: Text(
+                    Strings.phonePrefix +
+                      (GetStorage().read(PrefKeys.phoneNumber) ?? Strings.phoneNumberDefault),
                     style: TextStyle(fontSize: 18.sp, color: Colors.grey[400])
-                )
+                ),
             ),
           ),
           ListTile(

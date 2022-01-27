@@ -33,4 +33,7 @@ abstract class Strings {
   static const String theme = 'ТЕМА ПРИЛОЖЕНИЯ';
   static const String light = 'Светлая';
   static const String dark = 'Тёмная';
+  static const String alertResetTitle= 'Внимание!  Пароль будет сброшен';
+  static const String alertResetBody= 'После этого вам понадобится заново пройти регистрацию. Сбросить пароль?';
+  static const String passwordResets= 'Пароль сброшен';
 }

@@ -118,7 +118,9 @@ class _AuthScreenState extends State<AuthScreen> {
                   SizedBox(height: 40.h,),
                   InkWell(
                     child: Text(Strings.forgotPassword, style: linkTextStyle,),
-                    onTap: () {}
+                    onTap: () {
+                      showResetPasswordDialog(context);
+                    }
                   ),
                   SizedBox(height: 40.h,),
                 ],
@@ -159,6 +161,38 @@ class _AuthScreenState extends State<AuthScreen> {
           backgroundColor: Colors.red,
         )
     );
+  }
+
+  Future<void> showResetPasswordDialog(BuildContext context) {
+    return showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: const Text(Strings.alertResetTitle),
+            content: const Text(Strings.alertResetBody),
+            actions: <Widget>[
+              TextButton(
+                child: const Text('НЕТ', style: TextStyle(color: Colors.red)),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+              TextButton(
+                child: const Text('ДА', style: TextStyle(color: Colors.green)),
+                onPressed: () {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text(Strings.passwordResets),
+                      )
+                  );
+                  _storage.remove(PrefKeys.phoneNumber);
+                  _storage.remove(PrefKeys.password);
+                  Navigator.of(context).pushNamedAndRemoveUntil(Screens.registration, (route) => false);
+                },
+              ),
+            ],
+          );
+        });
   }
 
   @override
