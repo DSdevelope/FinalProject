@@ -3,6 +3,7 @@ import 'package:finalproject/screens/auth_screen.dart';
 import 'package:finalproject/screens/registration_screen.dart';
 import 'package:finalproject/screens/settings_screen.dart';
 import 'package:finalproject/screens/users_list_screen.dart';
+import 'package:finalproject/screens/verification_screen.dart';
 import 'package:finalproject/utils/prefkeys.dart';
 import 'package:finalproject/utils/screens.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -29,7 +30,7 @@ class MyApp extends StatelessWidget {
       minTextAdapt: false,
       builder: () =>
           GetMaterialApp(
-            title: 'Final Project',
+            title: 'Course Project',
             theme: ThemeData.light(),
             darkTheme: ThemeData.dark(),
             themeMode: getThemeMode(),
@@ -40,6 +41,7 @@ class MyApp extends StatelessWidget {
               Screens.users: (context) => const UsersListScreen(),
               Screens.about: (context) => const AboutScreen(),
               Screens.settings: (context) => const SettingsScreen(),
+              Screens.verification: (context) => const VerificationScreen(),
             },
           ),
 

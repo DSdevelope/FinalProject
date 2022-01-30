@@ -36,4 +36,5 @@ abstract class Strings {
   static const String alertResetTitle= 'Внимание!  Пароль будет сброшен';
   static const String alertResetBody= 'После этого вам понадобится заново пройти регистрацию. Сбросить пароль?';
   static const String passwordResets= 'Пароль сброшен';
+  static const String smsSent= 'На указанный вами номер отправлено СМС с кодом подтверждения';
 }

@@ -1,6 +1,9 @@
+import 'dart:developer';
+
 import 'package:finalproject/utils/prefkeys.dart';
 import 'package:finalproject/utils/screens.dart';
 import 'package:finalproject/utils/strings.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get_storage/get_storage.dart';
@@ -119,8 +122,9 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                     child: ElevatedButton(
                       onPressed: () {
                         if (_verifyInputData(context)) {
-                          saveUserData();
-                          Navigator.of(context).popAndPushNamed(Screens.users);
+                          verifyPhone(_phoneController.text);
+                          // saveUserData();
+                          // Navigator.of(context).popAndPushNamed(Screens.users);
                         }
                       },
                       child: Padding(
@@ -194,6 +198,24 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     );
   }
 
+  void verifyPhone(String phone) async {
+    FirebaseAuth auth = FirebaseAuth.instance;
+    await auth.verifyPhoneNumber(
+      phoneNumber: phone,
+      verificationCompleted: (PhoneAuthCredential credential) async {
+        // await auth.signInWithCredential(credential);
+      },
+      verificationFailed: (FirebaseAuthException e) {
+        // TODO Вывести диалог об ошибке
+        log('Phone verification error: ${e.code}');
+      },
+      codeSent: (String verificationId, int? resendToken) {
+
+      },
+      codeAutoRetrievalTimeout: (String verificationId) {},
+    );
+  }
+
   void saveUserData() {
     _storage.write(PrefKeys.phoneNumber, _phoneController.text);
     _storage.write(PrefKeys.password, _passwordController.text);
@@ -206,4 +228,5 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     _confirmController.dispose();
     super.dispose();
   }
+
 }
